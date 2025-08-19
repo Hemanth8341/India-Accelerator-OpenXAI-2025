@@ -129,15 +129,15 @@ export default function LearnAI() {
     if (answerIndex === quiz[currentQuestion].correct) {
       setScore(score + 1)
     }
-    
-    setTimeout(() => {
-      if (currentQuestion < quiz.length - 1) {
-        setCurrentQuestion(currentQuestion + 1)
-        setSelectedAnswer(null)
-      } else {
-        setShowResults(true)
-      }
-    }, 1500)
+  }
+
+  const nextQuestion = () => {
+    if (currentQuestion < quiz.length - 1) {
+      setCurrentQuestion(currentQuestion + 1)
+      setSelectedAnswer(null)
+    } else {
+      setShowResults(true)
+    }
   }
 
   return (
@@ -145,7 +145,7 @@ export default function LearnAI() {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4">📚 LearnAI</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">📚 Hemanth AI</h1>
           <p className="text-white/80 text-lg">AI-Powered Educational Tools</p>
         </div>
 
@@ -319,6 +319,14 @@ export default function LearnAI() {
                       <div className="mt-4 p-4 bg-white/20 rounded-lg">
                         <p className="text-white font-medium">Explanation:</p>
                         <p className="text-white/90">{quiz[currentQuestion]?.explanation}</p>
+                        <div className="mt-4 flex justify-end">
+                          <button
+                            onClick={nextQuestion}
+                            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
+                          >
+                            Next
+                          </button>
+                        </div>
                       </div>
                     )}
                   </div>
